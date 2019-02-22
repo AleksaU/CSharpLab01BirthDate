@@ -20,6 +20,6 @@
         <TextBlock Grid.Row ="2" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" Text="{Binding Age, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock Grid.Row ="3" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" FontWeight="DemiBold" Text="{Binding WesternZodiac, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
          <TextBlock Grid.Row ="4" TextWrapping="Wrap" FontWeight="DemiBold" TextAlignment="Center" FontSize="16" Text="{Binding ZodiacChinese, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Grid.Row="5" Margin="10" Height="35" Content="ДФДФД" Command="{Binding SignInCommand}" />
+        <Button Grid.Row="5" Margin="10,10,10,-49" Content="Calculate" Command="{Binding CalculateCommand}" />
     </Grid>
 </Window>

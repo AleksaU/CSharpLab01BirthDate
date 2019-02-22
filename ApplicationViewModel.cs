@@ -2,18 +2,24 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Lab01BirthDateMVVM
 {
 
     internal class ApplicationViewModel : INotifyPropertyChanged
     {
-       
+
 
         private DateTime _usersBirthDate = DateTime.Today;
         private int _usersAge;
         private string _westernZodiac;
         private string _chineseZodiac;
+
+        private ICommand _calculateCommand;
+
+
+        public ICommand SignInCommand => _calculateCommand ?? (_calculateCommand = new RelayCommand<object>(o => Calculations()));
 
         public string Age
         {
@@ -22,7 +28,7 @@ namespace Lab01BirthDateMVVM
                 return $"Your age is {_usersAge}";
             }
         }
-       
+
         public string WesternZodiac
         {
             get
@@ -43,7 +49,7 @@ namespace Lab01BirthDateMVVM
             get
             {
                 return $"China zodiak: {_chineseZodiac}";
-               
+
             }
             private set
             {
@@ -59,7 +65,7 @@ namespace Lab01BirthDateMVVM
                 _usersBirthDate = value;
                 try
                 {
-                
+
                     Calculations();
                     OnPropertyChanged();
 
@@ -76,10 +82,6 @@ namespace Lab01BirthDateMVVM
         internal ApplicationViewModel()
         {
         }
-
-    
-       
-
         public void Calculations()
         {
 
@@ -95,24 +97,17 @@ namespace Lab01BirthDateMVVM
             _usersAge = ageNow;
             OnPropertyChanged(nameof(Age)); //nameof - returns value of Age(_age)
 
-           if ((ageNow < 0) || (ageNow > 135))
-             {
-               
+            if ((ageNow < 0) || (ageNow > 135))
+            {
+
                 MessageBox.Show("Wrong!");
-                
+
             }
 
-          ZodiacChinese = CalculateChineseZodiac();
-          WesternZodiac = CalculateWesternZodiac();
-
-          //  _isTodayABirthday = IsTodayBirthday();
+            ZodiacChinese = CalculateChineseZodiac();
+            WesternZodiac = CalculateWesternZodiac();
 
         }
-
-
-     
-
-
 
         private string CalculateChineseZodiac()
         {
@@ -161,9 +156,6 @@ namespace Lab01BirthDateMVVM
             }
 
         }
-
-
-
 
         private string CalculateWesternZodiac()
         {
@@ -222,46 +214,7 @@ namespace Lab01BirthDateMVVM
             }
 
 
-
-
-
         }
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         private bool IsTodayBirthday()
@@ -270,24 +223,13 @@ namespace Lab01BirthDateMVVM
             return DateTime.Today.DayOfYear == _usersBirthDate.DayOfYear;
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-     
 
-         public event PropertyChangedEventHandler PropertyChanged;
-
-     
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
-
-
-
-
-
-
-
-
+   
 }
