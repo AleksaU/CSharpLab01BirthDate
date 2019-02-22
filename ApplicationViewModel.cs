@@ -82,6 +82,7 @@ namespace Lab01BirthDateMVVM
         internal ApplicationViewModel()
         {
         }
+
         public void Calculations()
         {
 
@@ -231,5 +232,5 @@ namespace Lab01BirthDateMVVM
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-   
+
 }
