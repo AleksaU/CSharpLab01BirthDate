@@ -77,8 +77,6 @@ namespace Lab01BirthDateMVVM
         {
         }
 
-    
-       
 
         public void Calculations()
         {
@@ -108,11 +106,6 @@ namespace Lab01BirthDateMVVM
           //  _isTodayABirthday = IsTodayBirthday();
 
         }
-
-
-     
-
-
 
         private string CalculateChineseZodiac()
         {
@@ -161,9 +154,6 @@ namespace Lab01BirthDateMVVM
             }
 
         }
-
-
-
 
         private string CalculateWesternZodiac()
         {
@@ -221,47 +211,7 @@ namespace Lab01BirthDateMVVM
                 return "La";
             }
 
-
-
-
-
         }
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         private bool IsTodayBirthday()
@@ -271,8 +221,6 @@ namespace Lab01BirthDateMVVM
         }
 
 
-     
-
          public event PropertyChangedEventHandler PropertyChanged;
 
      
@@ -281,13 +229,5 @@ namespace Lab01BirthDateMVVM
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
-
-
-
-
-
-
-
 
 }
