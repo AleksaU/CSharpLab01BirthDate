@@ -211,7 +211,7 @@ namespace Lab01BirthDateMVVM
             }
             else
             {
-                return "La";
+                return "";
             }
 
 
